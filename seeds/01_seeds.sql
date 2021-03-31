@@ -1,22 +1,22 @@
--- INSERT INTO users (name, email, password) 
--- VALUES  ('Eva Stanley', 'sebastianguerra@ymail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.'),
---         ('Louisa Meyer', 'jacksonrose@hotmail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.'),
---         ('Dominic Parks', 'victoriablackwell@outlook.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.'),
---         ('Sue Luna', 'jacksonrose@hotmail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.'),
---         ('Rosalie Garza', 'jacksondavid@hotmail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.'),
---         ('Etta West', 'charlielevy@yahoo.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.'),
---         ('Margaret Wong', 'rose@gmail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.'),
---         ('Leroy Hart', 'jaycereynolds@inbox.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.');
+INSERT INTO users (name, email, password) 
+VALUES  ('Eva Stanley', 'sebastianguerra@ymail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.'),
+        ('Louisa Meyer', 'jacksonrose@hotmail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.'),
+        ('Dominic Parks', 'victoriablackwell@outlook.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.'),
+        ('Sue Luna', 'jacksonrose@hotmail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.'),
+        ('Rosalie Garza', 'jacksondavid@hotmail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.'),
+        ('Etta West', 'charlielevy@yahoo.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.'),
+        ('Margaret Wong', 'rose@gmail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.'),
+        ('Leroy Hart', 'jaycereynolds@inbox.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.');
 
--- INSERT INTO properties (owner_id, title, description, thumbnail_photo_url, cover_photo_url, cost_per_night, parking_spaces, number_of_bathrooms, number_of_bedrooms, country, street, city, province, post_code, active)
--- VALUES  (1, 'Speed Lamp', 'description', 'https://unsplash.com/photos/178j8tJrNlc', 'https://unsplash.com/photos/178j8tJrNlc', 930.61, 6, 4, 3, 'Canada', '536 Namsub HWay', 'Sotboske', 'Quebec', 'h3w1c1', TRUE),
---         (1, 'Blank Corner', 'description', 'https://unsplash.com/photos/178j8tJrNlc', 'https://unsplash.com/photos/178j8tJrNlc', 1245, 3, 3, 5, 'Canada', '348  Bouchette', 'Montreal', 'Quebec', 'h3w1c1', TRUE),
---         (2, 'Habit Mix', 'description', 'https://unsplash.com/photos/178j8tJrNlc', 'https://unsplash.com/photos/178j8tJrNlc', 637, 3, 2, 4, 'Canada', '3565 Plamondon', 'Montreal', 'Quebec', 'h3w1c1', TRUE),
---         (4, 'Headed Know', 'description', 'https://unsplash.com/photos/178j8tJrNlc', 'https://unsplash.com/photos/178j8tJrNlc', 978, 3, 2, 6, 'Canada', '345 Namsub HWay', 'Sotboske', 'Quebec', 'h3w1c1', TRUE),
---         (6, 'Port Out', 'description', 'https://unsplash.com/photos/178j8tJrNlc', 'https://unsplash.com/photos/178j8tJrNlc', 987, 4, 3, 6, 'Canada', '42-345 Placemont', 'Richfield', 'Vancouber', 'h3w2231', TRUE),
---         (6, 'Fun Glad', 'description', 'https://unsplash.com/photos/178j8tJrNlc', 'https://unsplash.com/photos/178j8tJrNlc', 345, 1, 1, 2, 'Canada', '536 Namsub HWay', 'Sotboske', 'Quebec', 'h3w1c1', TRUE),
---         (7, 'Shine Twenty', 'description', 'https://unsplash.com/photos/178j8tJrNlc', 'https://unsplash.com/photos/178j8tJrNlc', 500, 1, 2, 2, 'Canada', '536 Namsub HWay', 'Sotboske', 'Quebec', 'h3w1c1', TRUE),
---         (8, 'Game Fill', 'description', 'https://unsplash.com/photos/178j8tJrNlc', 'https://unsplash.com/photos/178j8tJrNlc', 650, 1, 2, 3, 'Canada', '536 Namsub HWay', 'Sotboske', 'Quebec', 'h3w1c1', TRUE);
+INSERT INTO properties (owner_id, title, description, thumbnail_photo_url, cover_photo_url, cost_per_night, parking_spaces, number_of_bathrooms, number_of_bedrooms, country, street, city, province, post_code, active)
+VALUES  (1, 'Speed Lamp', 'description', 'https://unsplash.com/photos/178j8tJrNlc', 'https://unsplash.com/photos/178j8tJrNlc', 930.61, 6, 4, 3, 'Canada', '536 Namsub HWay', 'Sotboske', 'Quebec', 'h3w1c1', TRUE),
+        (1, 'Blank Corner', 'description', 'https://unsplash.com/photos/178j8tJrNlc', 'https://unsplash.com/photos/178j8tJrNlc', 1245, 3, 3, 5, 'Canada', '348  Bouchette', 'Montreal', 'Quebec', 'h3w1c1', TRUE),
+        (2, 'Habit Mix', 'description', 'https://unsplash.com/photos/178j8tJrNlc', 'https://unsplash.com/photos/178j8tJrNlc', 637, 3, 2, 4, 'Canada', '3565 Plamondon', 'Montreal', 'Quebec', 'h3w1c1', TRUE),
+        (4, 'Headed Know', 'description', 'https://unsplash.com/photos/178j8tJrNlc', 'https://unsplash.com/photos/178j8tJrNlc', 978, 3, 2, 6, 'Canada', '345 Namsub HWay', 'Sotboske', 'Quebec', 'h3w1c1', TRUE),
+        (6, 'Port Out', 'description', 'https://unsplash.com/photos/178j8tJrNlc', 'https://unsplash.com/photos/178j8tJrNlc', 987, 4, 3, 6, 'Canada', '42-345 Placemont', 'Richfield', 'Vancouber', 'h3w2231', TRUE),
+        (6, 'Fun Glad', 'description', 'https://unsplash.com/photos/178j8tJrNlc', 'https://unsplash.com/photos/178j8tJrNlc', 345, 1, 1, 2, 'Canada', '536 Namsub HWay', 'Sotboske', 'Quebec', 'h3w1c1', TRUE),
+        (7, 'Shine Twenty', 'description', 'https://unsplash.com/photos/178j8tJrNlc', 'https://unsplash.com/photos/178j8tJrNlc', 500, 1, 2, 2, 'Canada', '536 Namsub HWay', 'Sotboske', 'Quebec', 'h3w1c1', TRUE),
+        (8, 'Game Fill', 'description', 'https://unsplash.com/photos/178j8tJrNlc', 'https://unsplash.com/photos/178j8tJrNlc', 650, 1, 2, 3, 'Canada', '536 Namsub HWay', 'Sotboske', 'Quebec', 'h3w1c1', TRUE);
 
 INSERT INTO reservations (start_date, end_date, property_id, guess_id)
      VALUES ('2018-09-01', '2018-09-03', 3, 3),
