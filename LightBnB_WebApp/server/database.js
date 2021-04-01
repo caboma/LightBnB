@@ -127,75 +127,7 @@ const getAllProperties = function(options, limit = 10) {
     queryParams.push(parseInt(options.minimum_rating));
     queryString += `AND rating >= $${queryParams.length}`
   }
-  // filter by all : city, minimum_price_per_night, maximum_price_per_night, minimum_rating
-  // if (options.city && options.minimum_price_per_night && options.maximum_price_per_night && options.minimum_rating){
-  //   queryParams.push(`%${options.city}%`,`${options.minimum_price_per_night}`, `${options.maximum_price_per_night}`, `${options.minimum_rating}`);
-  //   queryString += `WHERE city LIKE $1 AND cost_per_night >= $2 AND cost_per_night <= $3 AND rating >= $4`;
-  // } 
-  // // filter by 3 values : city, minimum_price_per_night, maximum_price_per_night
-  // else if (options.city && options.minimum_price_per_night && options.maximum_price_per_night){
-  //   queryParams.push(`%${options.city}%`,`${options.minimum_price_per_night}`, `${options.maximum_price_per_night}`);
-  //   queryString += `WHERE city LIKE $1 AND cost_per_night >= $2 AND cost_per_night <= $3`;
-  // } 
-  // // filter by 3 values : city, minimum_price_per_night, minimum_rating
-  // else if (options.city && options.minimum_price_per_night && options.minimum_rating){
-  //   queryParams.push(`%${options.city}%`,`${options.minimum_price_per_night}`, `${options.minimum_rating}`);
-  //   queryString += `WHERE city LIKE $1 AND cost_per_night >= $2 AND rating >= $3`;
-  // } 
-  // //filter by 3 values : city, maximum_price_per_night, minimum_rating
-  // else if (options.city && options.maximum_price_per_night && options.minimum_rating){
-  //   queryParams.push(`%${options.city}%`,`${options.maximum_price_per_night}`, `${options.minimum_rating}`);
-  //   queryString += `WHERE city LIKE $1 AND cost_per_night <= $2 AND rating >= $3`;
-  // } 
-  // //filter by 3 values : minimum_price_per_night, maximum_price_per_night, minimum_rating
-  // else if (options.minimum_price_per_night && options.maximum_price_per_night && options.minimum_rating){
-  //   queryParams.push(`${options.minimum_price_per_night}`, `${options.maximum_price_per_night}`, `${options.minimum_rating}`);
-  //   queryString += `WHERE cost_per_night >= $1 AND cost_per_night <= $2 AND rating >= $3`;
-  // } 
-  // //filter by 2 values : city, minimum_rating
-  // else if (options.city && options.minimum_rating){
-  //   queryParams.push(`%${options.city}%`, `${options.minimum_rating}`);
-  //   queryString += `WHERE city LIKE $1 AND rating >= $2`;
-  // } 
-  // //filter by 2 values : minimum_price_per_night, minimum_rating
-  // else if (options.minimum_price_per_night && options.minimum_rating){
-  //   queryParams.push(`${options.minimum_price_per_night}`, `${options.minimum_rating}`);
-  //   queryString += `WHERE cost_per_night >= $1 AND rating >= $2`;
-  // } 
-  // //filter by 2 values : maximum_price_per_night, minimum_rating
-  // else if (options.maximum_price_per_night && options.minimum_rating){
-  //   queryParams.push(`${options.maximum_price_per_night}`, `${options.minimum_rating}`);
-  //   queryString += `cost_per_night <= $1 AND rating >= $2`;
-  // }
-  // //filter by 2 values : city, minimum_price_per_night
-  // else if (options.city && options.minimum_price_per_night){
-  //   queryParams.push(`%${options.city}%`,`${options.minimum_price_per_night}`);
-  //   queryString += `WHERE city LIKE $1 AND cost_per_night >= $2`;
-  // } 
-  // //filter by 2 values : city, maximum_price_per_night
-  // else if (options.city && options.maximum_price_per_night){
-  //   queryParams.push(`%${options.city}%`,`${options.maximum_price_per_night}`);
-  //   queryString += `WHERE city LIKE $1 AND cost_per_night <= $2`;
-  // } 
-  // //filter by 2 values : minimum_price_per_night, maximum_price_per_night
-  // else if (options.minimum_price_per_night && options.maximum_price_per_night){
-  //   queryParams.push(`${options.minimum_price_per_night}`, `${options.maximum_price_per_night}`);
-  //   queryString += `WHERE cost_per_night >= $1 AND cost_per_night <= $2`;
-  // } 
-  // //filter by 1 value
-  // else if (options.city) {
-  //   queryParams.push(`%${options.city}%`);
-  //   queryString += `WHERE city LIKE $1 `;
-  // } else if (options.minimum_price_per_night){
-  //   queryParams.push(`${options.minimum_price_per_night}`);
-  //   queryString += `WHERE cost_per_night >= $1 `;
-  // } else if (options.maximum_price_per_night){
-  //   queryParams.push(`${options.maximum_price_per_night}`);
-  //   queryString += `WHERE cost_per_night <= $1`;
-  // } else if (options.minimum_rating){
-  //   queryParams.push(`${options.minimum_rating}`);
-  //   queryString += `WHERE rating >= $1 `;
-  // }
+
   
   // 4
   queryParams.push(limit);
