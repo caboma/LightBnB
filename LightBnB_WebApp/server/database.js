@@ -39,7 +39,12 @@ const getUserWithId = function(id) {
   SELECT * FROM users
   WHERE id = $1
   `, [id])
-  .then(res => res.rows[0]);
+  .then(res => {
+    if (!res.rows) {
+      return null
+    }
+    return res.rows[0]
+  });
 }
 exports.getUserWithId = getUserWithId;
 
@@ -57,9 +62,9 @@ const addUser =  function(user) {
   `,[user.name, user.email, user.password])
   .then(res => {
     if (!res.rows) {
-      return null;
+      return null
     }
-    res.rows[0];
+    return res.rows[0]
   });
 }
 exports.addUser = addUser;
@@ -100,15 +105,79 @@ const getAllProperties = function(options, limit = 10) {
   let queryString = `
   SELECT properties.*, avg(property_reviews.rating) as average_rating
   FROM properties
-  JOIN property_reviews ON properties.id = property_id
+  JOIN property_reviews ON properties.id = property_reviews.property_id
   `;
 
-  // 3
-  if (options.city) {
-    queryParams.push(`%${options.city}%`);
-    queryString += `WHERE city LIKE $${queryParams.length} `;
+  // filter by all : city, minimum_price_per_night, maximum_price_per_night, minimum_rating
+  if (options.city && options.minimum_price_per_night && options.maximum_price_per_night && options.minimum_rating){
+    queryParams.push(`%${options.city}%`,`${options.minimum_price_per_night}`, `${options.maximum_price_per_night}`, `${options.minimum_rating}`);
+    queryString += `WHERE city LIKE $1 AND cost_per_night >= $2 AND cost_per_night <= $3 AND rating >= $4`;
+  } 
+  // filter by 3 values : city, minimum_price_per_night, maximum_price_per_night
+  else if (options.city && options.minimum_price_per_night && options.maximum_price_per_night){
+    queryParams.push(`%${options.city}%`,`${options.minimum_price_per_night}`, `${options.maximum_price_per_night}`);
+    queryString += `WHERE city LIKE $1 AND cost_per_night >= $2 AND cost_per_night <= $3`;
+  } 
+  // filter by 3 values : city, minimum_price_per_night, minimum_rating
+  else if (options.city && options.minimum_price_per_night && options.minimum_rating){
+    queryParams.push(`%${options.city}%`,`${options.minimum_price_per_night}`, `${options.minimum_rating}`);
+    queryString += `WHERE city LIKE $1 AND cost_per_night >= $2 AND rating >= $3`;
+  } 
+  //filter by 3 values : city, maximum_price_per_night, minimum_rating
+  else if (options.city && options.maximum_price_per_night && options.minimum_rating){
+    queryParams.push(`%${options.city}%`,`${options.maximum_price_per_night}`, `${options.minimum_rating}`);
+    queryString += `WHERE city LIKE $1 AND cost_per_night <= $2 AND rating >= $3`;
+  } 
+  //filter by 3 values : minimum_price_per_night, maximum_price_per_night, minimum_rating
+  else if (options.minimum_price_per_night && options.maximum_price_per_night && options.minimum_rating){
+    queryParams.push(`${options.minimum_price_per_night}`, `${options.maximum_price_per_night}`, `${options.minimum_rating}`);
+    queryString += `WHERE cost_per_night >= $1 AND cost_per_night <= $2 AND rating >= $3`;
+  } 
+  //filter by 2 values : city, minimum_rating
+  else if (options.city && options.minimum_rating){
+    queryParams.push(`%${options.city}%`, `${options.minimum_rating}`);
+    queryString += `WHERE city LIKE $1 AND rating >= $2`;
+  } 
+  //filter by 2 values : minimum_price_per_night, minimum_rating
+  else if (options.minimum_price_per_night && options.minimum_rating){
+    queryParams.push(`${options.minimum_price_per_night}`, `${options.minimum_rating}`);
+    queryString += `WHERE cost_per_night >= $1 AND rating >= $2`;
+  } 
+  //filter by 2 values : maximum_price_per_night, minimum_rating
+  else if (options.maximum_price_per_night && options.minimum_rating){
+    queryParams.push(`${options.maximum_price_per_night}`, `${options.minimum_rating}`);
+    queryString += `cost_per_night <= $1 AND rating >= $2`;
   }
-
+  //filter by 2 values : city, minimum_price_per_night
+  else if (options.city && options.minimum_price_per_night){
+    queryParams.push(`%${options.city}%`,`${options.minimum_price_per_night}`);
+    queryString += `WHERE city LIKE $1 AND cost_per_night >= $2`;
+  } 
+  //filter by 2 values : city, maximum_price_per_night
+  else if (options.city && options.maximum_price_per_night){
+    queryParams.push(`%${options.city}%`,`${options.maximum_price_per_night}`);
+    queryString += `WHERE city LIKE $1 AND cost_per_night <= $2`;
+  } 
+  //filter by 2 values : minimum_price_per_night, maximum_price_per_night
+  else if (options.minimum_price_per_night && options.maximum_price_per_night){
+    queryParams.push(`${options.minimum_price_per_night}`, `${options.maximum_price_per_night}`);
+    queryString += `WHERE cost_per_night >= $1 AND cost_per_night <= $2`;
+  } 
+  //filter by 1 value
+  else if (options.city) {
+    queryParams.push(`%${options.city}%`);
+    queryString += `WHERE city LIKE $1 `;
+  } else if (options.minimum_price_per_night){
+    queryParams.push(`${options.minimum_price_per_night}`);
+    queryString += `WHERE cost_per_night >= $1 `;
+  } else if (options.maximum_price_per_night){
+    queryParams.push(`${options.maximum_price_per_night}`);
+    queryString += `WHERE cost_per_night <= $1`;
+  } else if (options.minimum_rating){
+    queryParams.push(`${options.minimum_rating}`);
+    queryString += `WHERE rating >= $1 `;
+  }
+  
   // 4
   queryParams.push(limit);
   queryString += `
